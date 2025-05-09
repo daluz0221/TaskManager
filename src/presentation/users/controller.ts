@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CustomError, RegisterUserDto, UserRepository } from "../../domain";
+import { CustomError, LoginUserDto, RegisterUserDto, UserRepository } from "../../domain";
 import { Uuid } from "../../config";
 
 
@@ -51,18 +51,34 @@ export class UserController {
             res.json(user)
             
         } catch (error) {
-            res.status(500).json({error})
+            this.handlerError( error, res )
         }
         
-        
-      
-
     };
 
 
-    public loginUser = (req: Request, res: Response) => {
+    public loginUser = async (req: Request, res: Response) => {
       
-        res.json("login del user")
+        const [error, loginUserDto] = LoginUserDto.create( req.body );
+        if (error) {
+            res.status(400).json({error});
+            return;
+        };
+
+        try {
+            
+            const user = await this.userRepository.loginUser( loginUserDto );
+            res.status(200).json({
+                message: 'Ingreso exitoso',
+                user
+            })
+            return
+
+        } catch (error) {
+            this.handlerError( error, res )
+        }
+
+
 
     };
 

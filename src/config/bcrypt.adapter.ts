@@ -12,7 +12,7 @@ export class bcryptAdatper {
         return hashSync( password, salt )
     };
 
-    public compare( password: string, hashed: string ){
+    static compare( password: string, hashed: string ){
 
         return compareSync( password, hashed )
 

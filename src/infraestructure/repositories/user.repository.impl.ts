@@ -1,4 +1,4 @@
-import { UserRepository, UserEntity, RegisterUserDto } from "../../domain";
+import { UserRepository, UserEntity, RegisterUserDto, LoginUserDto } from "../../domain";
 
 
 
@@ -19,7 +19,7 @@ export class UserRepositoryImpl implements UserRepository {
         return this.datasource.registerUser( registerUser );
     }
 
-    loginUser(loginUser: any): Promise<UserEntity> {
+    loginUser(loginUser: LoginUserDto): Promise<{}> {
         return this.datasource.loginUser( loginUser );
     }
     

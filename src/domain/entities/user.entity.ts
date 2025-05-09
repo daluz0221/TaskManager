@@ -26,5 +26,12 @@ export class UserEntity {
 
     };
 
+    public static loginUser( obj: { [key:string]: any } ): UserEntity{
+
+        const { id, username, email, password, createdAt, sendNotifications, emailValidated, timeBeforeNotification } = obj;
+
+        return new UserEntity( id, username, email, password, createdAt, sendNotifications, emailValidated, timeBeforeNotification )
+    };
+
 }
 
