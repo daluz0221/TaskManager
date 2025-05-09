@@ -30,9 +30,9 @@ model Usuario {
 model Categoria {
   id        String  @id
   name      String
-  tareas    Tarea[]
   usuarioId String
   usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  tareas    Tarea[]
 }
 
 enum Status {

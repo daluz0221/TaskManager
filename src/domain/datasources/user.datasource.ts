@@ -3,6 +3,7 @@ import { UserEntity } from "../entities/user.entity";
 
 
 
+
 export abstract class UserDatasource {
 
     abstract getAllUsers(): Promise<UserEntity[]>

@@ -1,12 +1,27 @@
 import { Request, Response } from "express";
+import { CustomError, RegisterUserDto, UserRepository } from "../../domain";
+import { Uuid } from "../../config";
 
 
 
 export class UserController {
 
     constructor(
-        // private readonly categoryRepository:
+        private readonly userRepository: UserRepository
     ){}
+
+    private handlerError = (error: unknown, res: Response) => {
+      
+        if(error instanceof CustomError){
+            res.status( error.statusCode ).json({ error: error.message });
+            return
+        };
+
+        console.log(`${error}`);
+        
+        res.status(500).json({error: 'Internal server error'})
+
+    };
 
 
     public getAllUsers = (req: Request, res: Response) => {
@@ -16,9 +31,31 @@ export class UserController {
     };
 
 
-    public registerUser = (req: Request, res: Response) => {
+    public registerUser = async(req: Request, res: Response) => {
+
+        const payload = {
+            id: Uuid.v4(),
+            ...req.body
+        } 
+        
+        const [ error, registerDto ] = RegisterUserDto.create( payload );
+        if (error) {
+            res.status(400).json({error});
+            return;
+        };
+
+        console.log(registerDto);
+
+        try {
+            const user = await this.userRepository.registerUser( registerDto );
+            res.json(user)
+            
+        } catch (error) {
+            res.status(500).json({error})
+        }
+        
+        
       
-        res.json("Register User")
 
     };
 
@@ -26,6 +63,12 @@ export class UserController {
     public loginUser = (req: Request, res: Response) => {
       
         res.json("login del user")
+
+    };
+
+    public validateEmail = (req: Request, res: Response) => {
+      
+        res.json("valida email")
 
     };
 

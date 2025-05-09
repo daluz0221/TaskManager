@@ -2580,8 +2580,8 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     usuarioId?: boolean
-    tareas?: boolean | Categoria$tareasArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    tareas?: boolean | Categoria$tareasArgs<ExtArgs>
     _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["categoria"]>
 
@@ -2607,8 +2607,8 @@ export namespace Prisma {
 
   export type CategoriaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "usuarioId", ExtArgs["result"]["categoria"]>
   export type CategoriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tareas?: boolean | Categoria$tareasArgs<ExtArgs>
     usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    tareas?: boolean | Categoria$tareasArgs<ExtArgs>
     _count?: boolean | CategoriaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CategoriaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2621,8 +2621,8 @@ export namespace Prisma {
   export type $CategoriaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Categoria"
     objects: {
-      tareas: Prisma.$TareaPayload<ExtArgs>[]
       usuario: Prisma.$UsuarioPayload<ExtArgs>
+      tareas: Prisma.$TareaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3022,8 +3022,8 @@ export namespace Prisma {
    */
   export interface Prisma__CategoriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tareas<T extends Categoria$tareasArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$tareasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TareaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    tareas<T extends Categoria$tareasArgs<ExtArgs> = {}>(args?: Subset<T, Categoria$tareasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TareaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6016,16 +6016,16 @@ export namespace Prisma {
     id?: StringFilter<"Categoria"> | string
     name?: StringFilter<"Categoria"> | string
     usuarioId?: StringFilter<"Categoria"> | string
-    tareas?: TareaListRelationFilter
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    tareas?: TareaListRelationFilter
   }
 
   export type CategoriaOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     usuarioId?: SortOrder
-    tareas?: TareaOrderByRelationAggregateInput
     usuario?: UsuarioOrderByWithRelationInput
+    tareas?: TareaOrderByRelationAggregateInput
   }
 
   export type CategoriaWhereUniqueInput = Prisma.AtLeast<{
@@ -6035,8 +6035,8 @@ export namespace Prisma {
     NOT?: CategoriaWhereInput | CategoriaWhereInput[]
     name?: StringFilter<"Categoria"> | string
     usuarioId?: StringFilter<"Categoria"> | string
-    tareas?: TareaListRelationFilter
     usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    tareas?: TareaListRelationFilter
   }, "id">
 
   export type CategoriaOrderByWithAggregationInput = {
@@ -6293,8 +6293,8 @@ export namespace Prisma {
   export type CategoriaCreateInput = {
     id: string
     name: string
-    tareas?: TareaCreateNestedManyWithoutCategoriaInput
     usuario: UsuarioCreateNestedOneWithoutCategoriasInput
+    tareas?: TareaCreateNestedManyWithoutCategoriaInput
   }
 
   export type CategoriaUncheckedCreateInput = {
@@ -6307,8 +6307,8 @@ export namespace Prisma {
   export type CategoriaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    tareas?: TareaUpdateManyWithoutCategoriaNestedInput
     usuario?: UsuarioUpdateOneRequiredWithoutCategoriasNestedInput
+    tareas?: TareaUpdateManyWithoutCategoriaNestedInput
   }
 
   export type CategoriaUncheckedUpdateInput = {
@@ -6919,6 +6919,12 @@ export namespace Prisma {
     deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
   }
 
+  export type UsuarioCreateNestedOneWithoutCategoriasInput = {
+    create?: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutCategoriasInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
   export type TareaCreateNestedManyWithoutCategoriaInput = {
     create?: XOR<TareaCreateWithoutCategoriaInput, TareaUncheckedCreateWithoutCategoriaInput> | TareaCreateWithoutCategoriaInput[] | TareaUncheckedCreateWithoutCategoriaInput[]
     connectOrCreate?: TareaCreateOrConnectWithoutCategoriaInput | TareaCreateOrConnectWithoutCategoriaInput[]
@@ -6926,17 +6932,19 @@ export namespace Prisma {
     connect?: TareaWhereUniqueInput | TareaWhereUniqueInput[]
   }
 
-  export type UsuarioCreateNestedOneWithoutCategoriasInput = {
-    create?: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutCategoriasInput
-    connect?: UsuarioWhereUniqueInput
-  }
-
   export type TareaUncheckedCreateNestedManyWithoutCategoriaInput = {
     create?: XOR<TareaCreateWithoutCategoriaInput, TareaUncheckedCreateWithoutCategoriaInput> | TareaCreateWithoutCategoriaInput[] | TareaUncheckedCreateWithoutCategoriaInput[]
     connectOrCreate?: TareaCreateOrConnectWithoutCategoriaInput | TareaCreateOrConnectWithoutCategoriaInput[]
     createMany?: TareaCreateManyCategoriaInputEnvelope
     connect?: TareaWhereUniqueInput | TareaWhereUniqueInput[]
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutCategoriasNestedInput = {
+    create?: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutCategoriasInput
+    upsert?: UsuarioUpsertWithoutCategoriasInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutCategoriasInput, UsuarioUpdateWithoutCategoriasInput>, UsuarioUncheckedUpdateWithoutCategoriasInput>
   }
 
   export type TareaUpdateManyWithoutCategoriaNestedInput = {
@@ -6951,14 +6959,6 @@ export namespace Prisma {
     update?: TareaUpdateWithWhereUniqueWithoutCategoriaInput | TareaUpdateWithWhereUniqueWithoutCategoriaInput[]
     updateMany?: TareaUpdateManyWithWhereWithoutCategoriaInput | TareaUpdateManyWithWhereWithoutCategoriaInput[]
     deleteMany?: TareaScalarWhereInput | TareaScalarWhereInput[]
-  }
-
-  export type UsuarioUpdateOneRequiredWithoutCategoriasNestedInput = {
-    create?: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutCategoriasInput
-    upsert?: UsuarioUpsertWithoutCategoriasInput
-    connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutCategoriasInput, UsuarioUpdateWithoutCategoriasInput>, UsuarioUncheckedUpdateWithoutCategoriasInput>
   }
 
   export type TareaUncheckedUpdateManyWithoutCategoriaNestedInput = {
@@ -7345,6 +7345,35 @@ export namespace Prisma {
     usuarioId?: StringFilter<"Categoria"> | string
   }
 
+  export type UsuarioCreateWithoutCategoriasInput = {
+    id: string
+    username: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    sendNotifications?: boolean
+    timeBeforeNotification?: number | null
+    emailValidated?: boolean
+    tareas?: TareaCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutCategoriasInput = {
+    id: string
+    username: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    sendNotifications?: boolean
+    timeBeforeNotification?: number | null
+    emailValidated?: boolean
+    tareas?: TareaUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutCategoriasInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
+  }
+
   export type TareaCreateWithoutCategoriaInput = {
     id: string
     title: string
@@ -7377,51 +7406,6 @@ export namespace Prisma {
   export type TareaCreateManyCategoriaInputEnvelope = {
     data: TareaCreateManyCategoriaInput | TareaCreateManyCategoriaInput[]
     skipDuplicates?: boolean
-  }
-
-  export type UsuarioCreateWithoutCategoriasInput = {
-    id: string
-    username: string
-    email: string
-    password: string
-    createdAt?: Date | string
-    sendNotifications?: boolean
-    timeBeforeNotification?: number | null
-    emailValidated?: boolean
-    tareas?: TareaCreateNestedManyWithoutUsuarioInput
-  }
-
-  export type UsuarioUncheckedCreateWithoutCategoriasInput = {
-    id: string
-    username: string
-    email: string
-    password: string
-    createdAt?: Date | string
-    sendNotifications?: boolean
-    timeBeforeNotification?: number | null
-    emailValidated?: boolean
-    tareas?: TareaUncheckedCreateNestedManyWithoutUsuarioInput
-  }
-
-  export type UsuarioCreateOrConnectWithoutCategoriasInput = {
-    where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutCategoriasInput, UsuarioUncheckedCreateWithoutCategoriasInput>
-  }
-
-  export type TareaUpsertWithWhereUniqueWithoutCategoriaInput = {
-    where: TareaWhereUniqueInput
-    update: XOR<TareaUpdateWithoutCategoriaInput, TareaUncheckedUpdateWithoutCategoriaInput>
-    create: XOR<TareaCreateWithoutCategoriaInput, TareaUncheckedCreateWithoutCategoriaInput>
-  }
-
-  export type TareaUpdateWithWhereUniqueWithoutCategoriaInput = {
-    where: TareaWhereUniqueInput
-    data: XOR<TareaUpdateWithoutCategoriaInput, TareaUncheckedUpdateWithoutCategoriaInput>
-  }
-
-  export type TareaUpdateManyWithWhereWithoutCategoriaInput = {
-    where: TareaScalarWhereInput
-    data: XOR<TareaUpdateManyMutationInput, TareaUncheckedUpdateManyWithoutCategoriaInput>
   }
 
   export type UsuarioUpsertWithoutCategoriasInput = {
@@ -7457,6 +7441,22 @@ export namespace Prisma {
     timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     tareas?: TareaUncheckedUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type TareaUpsertWithWhereUniqueWithoutCategoriaInput = {
+    where: TareaWhereUniqueInput
+    update: XOR<TareaUpdateWithoutCategoriaInput, TareaUncheckedUpdateWithoutCategoriaInput>
+    create: XOR<TareaCreateWithoutCategoriaInput, TareaUncheckedCreateWithoutCategoriaInput>
+  }
+
+  export type TareaUpdateWithWhereUniqueWithoutCategoriaInput = {
+    where: TareaWhereUniqueInput
+    data: XOR<TareaUpdateWithoutCategoriaInput, TareaUncheckedUpdateWithoutCategoriaInput>
+  }
+
+  export type TareaUpdateManyWithWhereWithoutCategoriaInput = {
+    where: TareaScalarWhereInput
+    data: XOR<TareaUpdateManyMutationInput, TareaUncheckedUpdateManyWithoutCategoriaInput>
   }
 
   export type SubTareaCreateWithoutTareaInput = {

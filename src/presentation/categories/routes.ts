@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { CategoryController } from "./controller";
 
 
 
@@ -13,10 +14,13 @@ export class CategoryRoutes {
         const router = Router();
 
 
+        const categoryController = new CategoryController()
 
         //Definir las rutas
-        router.get('/');
-        router.post('/');
+        router.get('/', categoryController.getAllCategories);
+        router.post('/', categoryController.createCategory);
+        router.put('/update/:id', categoryController.updateCategory);
+        router.put('/delete/:id', categoryController.deleteCategory);
 
         return router;
 

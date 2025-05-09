@@ -1,5 +1,4 @@
-import { UserRepository } from "../../domain";
-import { UserEntity } from "../../domain/entities/user.entity";
+import { UserRepository, UserEntity, RegisterUserDto } from "../../domain";
 
 
 
@@ -16,7 +15,7 @@ export class UserRepositoryImpl implements UserRepository {
         return this.datasource.getAllUsers();
     }
 
-    registerUser(registerUser: any): Promise<UserEntity> {
+    registerUser(registerUser: RegisterUserDto): Promise<UserEntity> {
         return this.datasource.registerUser( registerUser );
     }
 
