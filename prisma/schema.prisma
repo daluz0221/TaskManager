@@ -33,6 +33,7 @@ model Categoria {
   id                            String        @id 
   name                          String
   usuarioId                     String
+  active                        Boolean       @default(true)
   usuario                       Usuario       @relation(fields: [usuarioId], references: [id])
   tareas                        Tarea[]
 }
@@ -47,6 +48,7 @@ model Tarea {
   id                            String        @id 
   title                         String
   description                   String
+  active                        Boolean       @default(true)
   status                        Status        @default(PENDING)
   createdAt                     DateTime      @default(now())
   lastStatusChanged             DateTime      @db.Timestamp()
@@ -62,6 +64,7 @@ model SubTarea {
   id                            String           @id 
   title                         String
   description                   String
+  active                        Boolean       @default(true)
   status                        Status        @default(PENDING)
   createdAt                     DateTime      @default(now())
   lastStatusChanged             DateTime      @db.Timestamp()

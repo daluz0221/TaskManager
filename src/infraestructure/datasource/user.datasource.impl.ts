@@ -36,11 +36,9 @@ export class UserDatasourceImpl implements UserDatasource {
     async registerUser( registerUserDto: RegisterUserDto ): Promise<UserEntity> {
   
         
-        const registerUser = UserEntity.registerUser( registerUserDto );
+        const registerUser = UserEntity.convertUser( registerUserDto );
 
         const userExists = await this.findUserById( registerUser.email );
-
-        console.log(userExists);
         
 
         if( userExists ){
@@ -90,7 +88,7 @@ export class UserDatasourceImpl implements UserDatasource {
 
         const passwordMatch = bcryptAdatper.compare( password, user!.password );
         const {password: pss, ...userEntity} = UserEntity.loginUser( user! )
-        console.log(user);
+
         
         if ( !passwordMatch ){
             throw CustomError.badRequest('email or password wrong')

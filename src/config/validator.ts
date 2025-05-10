@@ -19,7 +19,7 @@ export class Validator {
 
       // Nombre: solo letras (con tildes y espacios), entre 2 y 50 caracteres
     static isName( name: string ) {
-        const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,50}$/;
+        const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s]{2,50}$/;
         return nameRegex.test(name.trim());
     };
 

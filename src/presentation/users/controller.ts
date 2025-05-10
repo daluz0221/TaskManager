@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CustomError, LoginUserDto, RegisterUserDto, UserRepository } from "../../domain";
 import { Uuid } from "../../config";
+import { handlerError } from "../../config/errors";
 
 
 
@@ -10,18 +11,6 @@ export class UserController {
         private readonly userRepository: UserRepository
     ){}
 
-    private handlerError = (error: unknown, res: Response) => {
-      
-        if(error instanceof CustomError){
-            res.status( error.statusCode ).json({ error: error.message });
-            return
-        };
-
-        console.log(`${error}`);
-        
-        res.status(500).json({error: 'Internal server error'})
-
-    };
 
 
     public getAllUsers = (req: Request, res: Response) => {
@@ -44,14 +33,13 @@ export class UserController {
             return;
         };
 
-        console.log(registerDto);
 
         try {
             const user = await this.userRepository.registerUser( registerDto );
             res.json(user)
             
         } catch (error) {
-            this.handlerError( error, res )
+            handlerError( error, res )
         }
         
     };
@@ -75,7 +63,7 @@ export class UserController {
             return
 
         } catch (error) {
-            this.handlerError( error, res )
+            handlerError( error, res )
         }
 
 

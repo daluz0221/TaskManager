@@ -134,13 +134,15 @@ exports.Prisma.UsuarioScalarFieldEnum = {
 exports.Prisma.CategoriaScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  usuarioId: 'usuarioId'
+  usuarioId: 'usuarioId',
+  active: 'active'
 };
 
 exports.Prisma.TareaScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  active: 'active',
   status: 'status',
   createdAt: 'createdAt',
   lastStatusChanged: 'lastStatusChanged',
@@ -153,6 +155,7 @@ exports.Prisma.SubTareaScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  active: 'active',
   status: 'status',
   createdAt: 'createdAt',
   lastStatusChanged: 'lastStatusChanged',

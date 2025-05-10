@@ -20,7 +20,7 @@ export class RegisterUserDto {
         if( !Uuid.validateUuid( id ) ) return ['Id is not a valid uuid']
 
         if(!username) return ['Missing name'];
-        if( !Validator.isName( username ) ) return['Username too short or too long'];
+        if( !Validator.isName( username ) ) return['Username can only contain letters and numbers'];
         
         if( !email ) return ['Missing email'];
         if( !Validator.validateEmail( email ) ) return ['Email is not valid'];

@@ -32,6 +32,7 @@ export class Server {
         this.app.use( express.json() ); // Raw
         this.app.use( express.urlencoded({ extended: true }) ) // x-www-form-urlencoded
 
+
         //Public folder
         this.app.use( express.static( this.publicPath ) );
 

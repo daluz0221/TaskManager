@@ -15,14 +15,18 @@ export class UserEntity {
         public timeBeforeNotification?: number,
     ){}
 
-    public static registerUser( obj: { [key:string]: any } ): UserEntity{
+    public static convertUser( obj: { [key:string]: any } ): UserEntity{
 
-        const { id, username, email, password } = {...obj}; 
-        console.log({id});
+        const { id, username, email, password, createdAt, sendNotifications, emailValidated, timeBeforeNotification } = {...obj}; 
+        
+        const createdAtEntity = createdAt ? createdAt : new Date();
+        const sendNotificationsEntity = sendNotifications ? sendNotifications : false;
+        const emailValidatedEntity = emailValidated ? emailValidated : false;
+        const timeBeforeNotificationEntity = timeBeforeNotification ? timeBeforeNotification : null;
         
         
 
-        return new UserEntity( id, username, email, password, new Date(), false, false )
+        return new UserEntity( id, username, email, password, createdAtEntity, sendNotificationsEntity, emailValidatedEntity, timeBeforeNotificationEntity )
 
     };
 
