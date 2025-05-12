@@ -47,7 +47,7 @@ enum Status {
 model Tarea {
   id                            String        @id 
   title                         String
-  description                   String
+  description                   String?
   active                        Boolean       @default(true)
   status                        Status        @default(PENDING)
   createdAt                     DateTime      @default(now())
@@ -63,7 +63,7 @@ model Tarea {
 model SubTarea {
   id                            String           @id 
   title                         String
-  description                   String
+  description                   String?
   active                        Boolean       @default(true)
   status                        Status        @default(PENDING)
   createdAt                     DateTime      @default(now())

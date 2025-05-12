@@ -1,3 +1,4 @@
+import { Request } from "express";
 import { CategoryEntity, CategoryRepository, DeleteCategoryDto, UpdateCategoryDto } from "../../domain";
 import { CreateCategoryDto } from "../../domain/dtos/categories/create-category.dto";
 
@@ -17,8 +18,8 @@ export class CategoryRepositoryImpl implements CategoryRepository{
     createCategory(createCategoryDto: CreateCategoryDto): Promise<CategoryEntity> {
         return this.datasource.createCategory( createCategoryDto )
     }
-    getCategory(id: string): Promise<CategoryEntity> {
-        return this.datasource.getCategory( id )
+    getCategory(id: string, res:Request): Promise<CategoryEntity> {
+        return this.datasource.getCategory( id, res )
     }
     updateCategory(updateCategoryDto: UpdateCategoryDto ): Promise<CategoryEntity> {
         return this.datasource.updateCategory( updateCategoryDto )

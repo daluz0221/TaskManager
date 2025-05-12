@@ -3705,7 +3705,7 @@ export namespace Prisma {
   export type TareaGroupByOutputType = {
     id: string
     title: string
-    description: string
+    description: string | null
     active: boolean
     status: $Enums.Status
     createdAt: Date
@@ -3820,7 +3820,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      description: string
+      description: string | null
       active: boolean
       status: $Enums.Status
       createdAt: Date
@@ -4856,7 +4856,7 @@ export namespace Prisma {
   export type SubTareaGroupByOutputType = {
     id: string
     title: string
-    description: string
+    description: string | null
     active: boolean
     status: $Enums.Status
     createdAt: Date
@@ -4947,7 +4947,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      description: string
+      description: string | null
       active: boolean
       status: $Enums.Status
       createdAt: Date
@@ -6110,7 +6110,7 @@ export namespace Prisma {
     NOT?: TareaWhereInput | TareaWhereInput[]
     id?: StringFilter<"Tarea"> | string
     title?: StringFilter<"Tarea"> | string
-    description?: StringFilter<"Tarea"> | string
+    description?: StringNullableFilter<"Tarea"> | string | null
     active?: BoolFilter<"Tarea"> | boolean
     status?: EnumStatusFilter<"Tarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"Tarea"> | Date | string
@@ -6126,7 +6126,7 @@ export namespace Prisma {
   export type TareaOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     active?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -6145,7 +6145,7 @@ export namespace Prisma {
     OR?: TareaWhereInput[]
     NOT?: TareaWhereInput | TareaWhereInput[]
     title?: StringFilter<"Tarea"> | string
-    description?: StringFilter<"Tarea"> | string
+    description?: StringNullableFilter<"Tarea"> | string | null
     active?: BoolFilter<"Tarea"> | boolean
     status?: EnumStatusFilter<"Tarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"Tarea"> | Date | string
@@ -6161,7 +6161,7 @@ export namespace Prisma {
   export type TareaOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     active?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -6182,7 +6182,7 @@ export namespace Prisma {
     NOT?: TareaScalarWhereWithAggregatesInput | TareaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Tarea"> | string
     title?: StringWithAggregatesFilter<"Tarea"> | string
-    description?: StringWithAggregatesFilter<"Tarea"> | string
+    description?: StringNullableWithAggregatesFilter<"Tarea"> | string | null
     active?: BoolWithAggregatesFilter<"Tarea"> | boolean
     status?: EnumStatusWithAggregatesFilter<"Tarea"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"Tarea"> | Date | string
@@ -6198,7 +6198,7 @@ export namespace Prisma {
     NOT?: SubTareaWhereInput | SubTareaWhereInput[]
     id?: StringFilter<"SubTarea"> | string
     title?: StringFilter<"SubTarea"> | string
-    description?: StringFilter<"SubTarea"> | string
+    description?: StringNullableFilter<"SubTarea"> | string | null
     active?: BoolFilter<"SubTarea"> | boolean
     status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"SubTarea"> | Date | string
@@ -6210,7 +6210,7 @@ export namespace Prisma {
   export type SubTareaOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     active?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -6225,7 +6225,7 @@ export namespace Prisma {
     OR?: SubTareaWhereInput[]
     NOT?: SubTareaWhereInput | SubTareaWhereInput[]
     title?: StringFilter<"SubTarea"> | string
-    description?: StringFilter<"SubTarea"> | string
+    description?: StringNullableFilter<"SubTarea"> | string | null
     active?: BoolFilter<"SubTarea"> | boolean
     status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"SubTarea"> | Date | string
@@ -6237,7 +6237,7 @@ export namespace Prisma {
   export type SubTareaOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     active?: SortOrder
     status?: SortOrder
     createdAt?: SortOrder
@@ -6254,7 +6254,7 @@ export namespace Prisma {
     NOT?: SubTareaScalarWhereWithAggregatesInput | SubTareaScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SubTarea"> | string
     title?: StringWithAggregatesFilter<"SubTarea"> | string
-    description?: StringWithAggregatesFilter<"SubTarea"> | string
+    description?: StringNullableWithAggregatesFilter<"SubTarea"> | string | null
     active?: BoolWithAggregatesFilter<"SubTarea"> | boolean
     status?: EnumStatusWithAggregatesFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"SubTarea"> | Date | string
@@ -6402,7 +6402,7 @@ export namespace Prisma {
   export type TareaCreateInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6416,7 +6416,7 @@ export namespace Prisma {
   export type TareaUncheckedCreateInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6430,7 +6430,7 @@ export namespace Prisma {
   export type TareaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6444,7 +6444,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6458,7 +6458,7 @@ export namespace Prisma {
   export type TareaCreateManyInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6471,7 +6471,7 @@ export namespace Prisma {
   export type TareaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6482,7 +6482,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6495,7 +6495,7 @@ export namespace Prisma {
   export type SubTareaCreateInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6506,7 +6506,7 @@ export namespace Prisma {
   export type SubTareaUncheckedCreateInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6517,7 +6517,7 @@ export namespace Prisma {
   export type SubTareaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6528,7 +6528,7 @@ export namespace Prisma {
   export type SubTareaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6539,7 +6539,7 @@ export namespace Prisma {
   export type SubTareaCreateManyInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -6550,7 +6550,7 @@ export namespace Prisma {
   export type SubTareaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6560,7 +6560,7 @@ export namespace Prisma {
   export type SubTareaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6758,6 +6758,21 @@ export namespace Prisma {
     active?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type EnumStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
@@ -6836,6 +6851,24 @@ export namespace Prisma {
 
   export type TareaSumOrderByAggregateInput = {
     progress?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -7088,6 +7121,10 @@ export namespace Prisma {
     connect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type EnumStatusFieldUpdateOperationsInput = {
     set?: $Enums.Status
   }
@@ -7276,11 +7313,42 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedEnumStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
     in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -7323,7 +7391,7 @@ export namespace Prisma {
   export type TareaCreateWithoutUsuarioInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7336,7 +7404,7 @@ export namespace Prisma {
   export type TareaUncheckedCreateWithoutUsuarioInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7402,7 +7470,7 @@ export namespace Prisma {
     NOT?: TareaScalarWhereInput | TareaScalarWhereInput[]
     id?: StringFilter<"Tarea"> | string
     title?: StringFilter<"Tarea"> | string
-    description?: StringFilter<"Tarea"> | string
+    description?: StringNullableFilter<"Tarea"> | string | null
     active?: BoolFilter<"Tarea"> | boolean
     status?: EnumStatusFilter<"Tarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"Tarea"> | Date | string
@@ -7470,7 +7538,7 @@ export namespace Prisma {
   export type TareaCreateWithoutCategoriaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7483,7 +7551,7 @@ export namespace Prisma {
   export type TareaUncheckedCreateWithoutCategoriaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7557,7 +7625,7 @@ export namespace Prisma {
   export type SubTareaCreateWithoutTareaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7567,7 +7635,7 @@ export namespace Prisma {
   export type SubTareaUncheckedCreateWithoutTareaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7654,7 +7722,7 @@ export namespace Prisma {
     NOT?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
     id?: StringFilter<"SubTarea"> | string
     title?: StringFilter<"SubTarea"> | string
-    description?: StringFilter<"SubTarea"> | string
+    description?: StringNullableFilter<"SubTarea"> | string | null
     active?: BoolFilter<"SubTarea"> | boolean
     status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"SubTarea"> | Date | string
@@ -7725,7 +7793,7 @@ export namespace Prisma {
   export type TareaCreateWithoutSubtareasInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7738,7 +7806,7 @@ export namespace Prisma {
   export type TareaUncheckedCreateWithoutSubtareasInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7767,7 +7835,7 @@ export namespace Prisma {
   export type TareaUpdateWithoutSubtareasInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7780,7 +7848,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateWithoutSubtareasInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7793,7 +7861,7 @@ export namespace Prisma {
   export type TareaCreateManyUsuarioInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7811,7 +7879,7 @@ export namespace Prisma {
   export type TareaUpdateWithoutUsuarioInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7824,7 +7892,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateWithoutUsuarioInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7837,7 +7905,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateManyWithoutUsuarioInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7869,7 +7937,7 @@ export namespace Prisma {
   export type TareaCreateManyCategoriaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7881,7 +7949,7 @@ export namespace Prisma {
   export type TareaUpdateWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7894,7 +7962,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7907,7 +7975,7 @@ export namespace Prisma {
   export type TareaUncheckedUpdateManyWithoutCategoriaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7919,7 +7987,7 @@ export namespace Prisma {
   export type SubTareaCreateManyTareaInput = {
     id: string
     title: string
-    description: string
+    description?: string | null
     active?: boolean
     status?: $Enums.Status
     createdAt?: Date | string
@@ -7929,7 +7997,7 @@ export namespace Prisma {
   export type SubTareaUpdateWithoutTareaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7939,7 +8007,7 @@ export namespace Prisma {
   export type SubTareaUncheckedUpdateWithoutTareaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7949,7 +8017,7 @@ export namespace Prisma {
   export type SubTareaUncheckedUpdateManyWithoutTareaInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     active?: BoolFieldUpdateOperationsInput | boolean
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

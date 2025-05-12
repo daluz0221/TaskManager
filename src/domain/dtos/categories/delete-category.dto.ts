@@ -7,6 +7,7 @@ export class DeleteCategoryDto {
     constructor(
         public readonly id: string,
         public readonly name: string,
+        public readonly usuarioId: string,
         public readonly active?: boolean,
     ){}
 

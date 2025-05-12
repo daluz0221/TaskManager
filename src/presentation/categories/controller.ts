@@ -18,7 +18,7 @@ export class CategoryController {
         
 
         try {
-            const category = await this.categoryRepository.getCategory( id );
+            const category = await this.categoryRepository.getCategory( id, req );
             
             res.json( category )
         } catch (error) {

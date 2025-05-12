@@ -5,6 +5,7 @@ export class UpdateCategoryDto {
     constructor(
         public readonly id: string,
         public readonly name: string,
+        public readonly usuarioId: string,
         public readonly active?: boolean,
     ){}
 
@@ -23,12 +24,12 @@ export class UpdateCategoryDto {
 
     static create( obj: {[key:string]: any} ): [string?, UpdateCategoryDto?] {
 
-        const { id, name } = obj;
+        const { id, name, usuarioId } = obj;
 
         if(!name) return ['Missing name']
 
 
-        return [undefined, new UpdateCategoryDto( id, name )]
+        return [undefined, new UpdateCategoryDto( id, name, usuarioId )]
     };
 
 
