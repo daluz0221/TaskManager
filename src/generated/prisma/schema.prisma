@@ -25,6 +25,7 @@ model Usuario {
   emailValidated         Boolean     @default(false)
   tareas                 Tarea[]
   categorias             Categoria[]
+  subtareas              SubTarea[]
 }
 
 model Categoria {
@@ -66,6 +67,8 @@ model SubTarea {
   status            Status   @default(PENDING)
   createdAt         DateTime @default(now())
   lastStatusChanged DateTime @db.Timestamp()
+  usuarioId         String
+  usuario           Usuario  @relation(fields: [usuarioId], references: [id])
   tareaId           String
   tarea             Tarea    @relation(fields: [tareaId], references: [id])
 }

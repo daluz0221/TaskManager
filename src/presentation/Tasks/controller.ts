@@ -14,8 +14,8 @@ export class TaskController {
     public getAllTasks = async(req: Request, res: Response) => {
          
         try {
-            const categories = await this.taskRepository.getAllTasks( req.body.user.id );
-            res.json(categories)
+            const tasks = await this.taskRepository.getAllTasks( req.body.user.id );
+            res.json( tasks )
         } catch (error) {
             handlerError( error, res )
         }

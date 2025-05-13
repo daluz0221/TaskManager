@@ -26,6 +26,7 @@ model Usuario {
   emailValidated                Boolean       @default(false)
   tareas                        Tarea[]
   categorias                    Categoria[]
+  subtareas                     SubTarea[]
 }
 
 
@@ -61,13 +62,15 @@ model Tarea {
 }
 
 model SubTarea {
-  id                            String           @id 
+  id                            String        @id 
   title                         String
   description                   String?
   active                        Boolean       @default(true)
   status                        Status        @default(PENDING)
   createdAt                     DateTime      @default(now())
   lastStatusChanged             DateTime      @db.Timestamp()
+  usuarioId                     String
+  usuario                       Usuario       @relation(fields: [usuarioId], references: [id])
   tareaId                       String
   tarea                         Tarea         @relation(fields: [tareaId], references: [id])
 }

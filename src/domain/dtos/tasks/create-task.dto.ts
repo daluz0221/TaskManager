@@ -10,11 +10,11 @@ export class CreateTaskDto {
 
     constructor(
         public readonly title: string,
-        public readonly description: string,
         public readonly usuarioId: string,
         public readonly categoriaId: string,
         public readonly status: Status,
-        public readonly progress: number
+        public readonly progress: number,
+        public readonly description?: string,
     ){}
 
     public static create( obj: {[key: string]: any} ): [string?, CreateTaskDto?]{
@@ -30,9 +30,9 @@ export class CreateTaskDto {
         if (!title) return ['Missing title']
         if (title.length > 20) return ['Title is too long']
 
-        if (!description) return ['Missing description']
+        
 
-        return [undefined, new CreateTaskDto(title, description, usuarioId, categoriaId, 'PENDING', 0)]
+        return [undefined, new CreateTaskDto(title, usuarioId, categoriaId, 'PENDING', 0, description)]
     };
 
 };

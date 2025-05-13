@@ -1162,11 +1162,13 @@ export namespace Prisma {
   export type UsuarioCountOutputType = {
     tareas: number
     categorias: number
+    subtareas: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tareas?: boolean | UsuarioCountOutputTypeCountTareasArgs
     categorias?: boolean | UsuarioCountOutputTypeCountCategoriasArgs
+    subtareas?: boolean | UsuarioCountOutputTypeCountSubtareasArgs
   }
 
   // Custom InputTypes
@@ -1192,6 +1194,13 @@ export namespace Prisma {
    */
   export type UsuarioCountOutputTypeCountCategoriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CategoriaWhereInput
+  }
+
+  /**
+   * UsuarioCountOutputType without action
+   */
+  export type UsuarioCountOutputTypeCountSubtareasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubTareaWhereInput
   }
 
 
@@ -1485,6 +1494,7 @@ export namespace Prisma {
     emailValidated?: boolean
     tareas?: boolean | Usuario$tareasArgs<ExtArgs>
     categorias?: boolean | Usuario$categoriasArgs<ExtArgs>
+    subtareas?: boolean | Usuario$subtareasArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
@@ -1525,6 +1535,7 @@ export namespace Prisma {
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tareas?: boolean | Usuario$tareasArgs<ExtArgs>
     categorias?: boolean | Usuario$categoriasArgs<ExtArgs>
+    subtareas?: boolean | Usuario$subtareasArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1535,6 +1546,7 @@ export namespace Prisma {
     objects: {
       tareas: Prisma.$TareaPayload<ExtArgs>[]
       categorias: Prisma.$CategoriaPayload<ExtArgs>[]
+      subtareas: Prisma.$SubTareaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1941,6 +1953,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tareas<T extends Usuario$tareasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$tareasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TareaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     categorias<T extends Usuario$categoriasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$categoriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subtareas<T extends Usuario$subtareasArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$subtareasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubTareaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2411,6 +2424,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CategoriaScalarFieldEnum | CategoriaScalarFieldEnum[]
+  }
+
+  /**
+   * Usuario.subtareas
+   */
+  export type Usuario$subtareasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubTarea
+     */
+    select?: SubTareaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubTarea
+     */
+    omit?: SubTareaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubTareaInclude<ExtArgs> | null
+    where?: SubTareaWhereInput
+    orderBy?: SubTareaOrderByWithRelationInput | SubTareaOrderByWithRelationInput[]
+    cursor?: SubTareaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SubTareaScalarFieldEnum | SubTareaScalarFieldEnum[]
   }
 
   /**
@@ -4720,6 +4757,7 @@ export namespace Prisma {
     status: $Enums.Status | null
     createdAt: Date | null
     lastStatusChanged: Date | null
+    usuarioId: string | null
     tareaId: string | null
   }
 
@@ -4731,6 +4769,7 @@ export namespace Prisma {
     status: $Enums.Status | null
     createdAt: Date | null
     lastStatusChanged: Date | null
+    usuarioId: string | null
     tareaId: string | null
   }
 
@@ -4742,6 +4781,7 @@ export namespace Prisma {
     status: number
     createdAt: number
     lastStatusChanged: number
+    usuarioId: number
     tareaId: number
     _all: number
   }
@@ -4755,6 +4795,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     lastStatusChanged?: true
+    usuarioId?: true
     tareaId?: true
   }
 
@@ -4766,6 +4807,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     lastStatusChanged?: true
+    usuarioId?: true
     tareaId?: true
   }
 
@@ -4777,6 +4819,7 @@ export namespace Prisma {
     status?: true
     createdAt?: true
     lastStatusChanged?: true
+    usuarioId?: true
     tareaId?: true
     _all?: true
   }
@@ -4861,6 +4904,7 @@ export namespace Prisma {
     status: $Enums.Status
     createdAt: Date
     lastStatusChanged: Date
+    usuarioId: string
     tareaId: string
     _count: SubTareaCountAggregateOutputType | null
     _min: SubTareaMinAggregateOutputType | null
@@ -4889,7 +4933,9 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     lastStatusChanged?: boolean
+    usuarioId?: boolean
     tareaId?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subTarea"]>
 
@@ -4901,7 +4947,9 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     lastStatusChanged?: boolean
+    usuarioId?: boolean
     tareaId?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subTarea"]>
 
@@ -4913,7 +4961,9 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     lastStatusChanged?: boolean
+    usuarioId?: boolean
     tareaId?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subTarea"]>
 
@@ -4925,23 +4975,28 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     lastStatusChanged?: boolean
+    usuarioId?: boolean
     tareaId?: boolean
   }
 
-  export type SubTareaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "active" | "status" | "createdAt" | "lastStatusChanged" | "tareaId", ExtArgs["result"]["subTarea"]>
+  export type SubTareaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "active" | "status" | "createdAt" | "lastStatusChanged" | "usuarioId" | "tareaId", ExtArgs["result"]["subTarea"]>
   export type SubTareaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }
   export type SubTareaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }
   export type SubTareaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
     tarea?: boolean | TareaDefaultArgs<ExtArgs>
   }
 
   export type $SubTareaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SubTarea"
     objects: {
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
       tarea: Prisma.$TareaPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -4952,6 +5007,7 @@ export namespace Prisma {
       status: $Enums.Status
       createdAt: Date
       lastStatusChanged: Date
+      usuarioId: string
       tareaId: string
     }, ExtArgs["result"]["subTarea"]>
     composites: {}
@@ -5347,6 +5403,7 @@ export namespace Prisma {
    */
   export interface Prisma__SubTareaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tarea<T extends TareaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TareaDefaultArgs<ExtArgs>>): Prisma__TareaClient<$Result.GetResult<Prisma.$TareaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5384,6 +5441,7 @@ export namespace Prisma {
     readonly status: FieldRef<"SubTarea", 'Status'>
     readonly createdAt: FieldRef<"SubTarea", 'DateTime'>
     readonly lastStatusChanged: FieldRef<"SubTarea", 'DateTime'>
+    readonly usuarioId: FieldRef<"SubTarea", 'String'>
     readonly tareaId: FieldRef<"SubTarea", 'String'>
   }
     
@@ -5861,6 +5919,7 @@ export namespace Prisma {
     status: 'status',
     createdAt: 'createdAt',
     lastStatusChanged: 'lastStatusChanged',
+    usuarioId: 'usuarioId',
     tareaId: 'tareaId'
   };
 
@@ -5990,6 +6049,7 @@ export namespace Prisma {
     emailValidated?: BoolFilter<"Usuario"> | boolean
     tareas?: TareaListRelationFilter
     categorias?: CategoriaListRelationFilter
+    subtareas?: SubTareaListRelationFilter
   }
 
   export type UsuarioOrderByWithRelationInput = {
@@ -6003,6 +6063,7 @@ export namespace Prisma {
     emailValidated?: SortOrder
     tareas?: TareaOrderByRelationAggregateInput
     categorias?: CategoriaOrderByRelationAggregateInput
+    subtareas?: SubTareaOrderByRelationAggregateInput
   }
 
   export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
@@ -6019,6 +6080,7 @@ export namespace Prisma {
     emailValidated?: BoolFilter<"Usuario"> | boolean
     tareas?: TareaListRelationFilter
     categorias?: CategoriaListRelationFilter
+    subtareas?: SubTareaListRelationFilter
   }, "id" | "email">
 
   export type UsuarioOrderByWithAggregationInput = {
@@ -6203,7 +6265,9 @@ export namespace Prisma {
     status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"SubTarea"> | Date | string
     lastStatusChanged?: DateTimeFilter<"SubTarea"> | Date | string
+    usuarioId?: StringFilter<"SubTarea"> | string
     tareaId?: StringFilter<"SubTarea"> | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     tarea?: XOR<TareaScalarRelationFilter, TareaWhereInput>
   }
 
@@ -6215,7 +6279,9 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     lastStatusChanged?: SortOrder
+    usuarioId?: SortOrder
     tareaId?: SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
     tarea?: TareaOrderByWithRelationInput
   }
 
@@ -6230,7 +6296,9 @@ export namespace Prisma {
     status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeFilter<"SubTarea"> | Date | string
     lastStatusChanged?: DateTimeFilter<"SubTarea"> | Date | string
+    usuarioId?: StringFilter<"SubTarea"> | string
     tareaId?: StringFilter<"SubTarea"> | string
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
     tarea?: XOR<TareaScalarRelationFilter, TareaWhereInput>
   }, "id">
 
@@ -6242,6 +6310,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     lastStatusChanged?: SortOrder
+    usuarioId?: SortOrder
     tareaId?: SortOrder
     _count?: SubTareaCountOrderByAggregateInput
     _max?: SubTareaMaxOrderByAggregateInput
@@ -6259,6 +6328,7 @@ export namespace Prisma {
     status?: EnumStatusWithAggregatesFilter<"SubTarea"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"SubTarea"> | Date | string
     lastStatusChanged?: DateTimeWithAggregatesFilter<"SubTarea"> | Date | string
+    usuarioId?: StringWithAggregatesFilter<"SubTarea"> | string
     tareaId?: StringWithAggregatesFilter<"SubTarea"> | string
   }
 
@@ -6273,6 +6343,7 @@ export namespace Prisma {
     emailValidated?: boolean
     tareas?: TareaCreateNestedManyWithoutUsuarioInput
     categorias?: CategoriaCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateInput = {
@@ -6286,6 +6357,7 @@ export namespace Prisma {
     emailValidated?: boolean
     tareas?: TareaUncheckedCreateNestedManyWithoutUsuarioInput
     categorias?: CategoriaUncheckedCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
@@ -6299,6 +6371,7 @@ export namespace Prisma {
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     tareas?: TareaUpdateManyWithoutUsuarioNestedInput
     categorias?: CategoriaUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
@@ -6312,6 +6385,7 @@ export namespace Prisma {
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     tareas?: TareaUncheckedUpdateManyWithoutUsuarioNestedInput
     categorias?: CategoriaUncheckedUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
@@ -6500,6 +6574,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuario: UsuarioCreateNestedOneWithoutSubtareasInput
     tarea: TareaCreateNestedOneWithoutSubtareasInput
   }
 
@@ -6511,6 +6586,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuarioId: string
     tareaId: string
   }
 
@@ -6522,6 +6598,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutSubtareasNestedInput
     tarea?: TareaUpdateOneRequiredWithoutSubtareasNestedInput
   }
 
@@ -6533,6 +6610,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
     tareaId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6544,6 +6622,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuarioId: string
     tareaId: string
   }
 
@@ -6565,6 +6644,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
     tareaId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6622,6 +6702,12 @@ export namespace Prisma {
     none?: CategoriaWhereInput
   }
 
+  export type SubTareaListRelationFilter = {
+    every?: SubTareaWhereInput
+    some?: SubTareaWhereInput
+    none?: SubTareaWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6632,6 +6718,10 @@ export namespace Prisma {
   }
 
   export type CategoriaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SubTareaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6791,19 +6881,9 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type SubTareaListRelationFilter = {
-    every?: SubTareaWhereInput
-    some?: SubTareaWhereInput
-    none?: SubTareaWhereInput
-  }
-
   export type CategoriaScalarRelationFilter = {
     is?: CategoriaWhereInput
     isNot?: CategoriaWhereInput
-  }
-
-  export type SubTareaOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type TareaCountOrderByAggregateInput = {
@@ -6910,6 +6990,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     lastStatusChanged?: SortOrder
+    usuarioId?: SortOrder
     tareaId?: SortOrder
   }
 
@@ -6921,6 +7002,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     lastStatusChanged?: SortOrder
+    usuarioId?: SortOrder
     tareaId?: SortOrder
   }
 
@@ -6932,6 +7014,7 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     lastStatusChanged?: SortOrder
+    usuarioId?: SortOrder
     tareaId?: SortOrder
   }
 
@@ -6949,6 +7032,13 @@ export namespace Prisma {
     connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
   }
 
+  export type SubTareaCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput> | SubTareaCreateWithoutUsuarioInput[] | SubTareaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: SubTareaCreateOrConnectWithoutUsuarioInput | SubTareaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: SubTareaCreateManyUsuarioInputEnvelope
+    connect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+  }
+
   export type TareaUncheckedCreateNestedManyWithoutUsuarioInput = {
     create?: XOR<TareaCreateWithoutUsuarioInput, TareaUncheckedCreateWithoutUsuarioInput> | TareaCreateWithoutUsuarioInput[] | TareaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: TareaCreateOrConnectWithoutUsuarioInput | TareaCreateOrConnectWithoutUsuarioInput[]
@@ -6961,6 +7051,13 @@ export namespace Prisma {
     connectOrCreate?: CategoriaCreateOrConnectWithoutUsuarioInput | CategoriaCreateOrConnectWithoutUsuarioInput[]
     createMany?: CategoriaCreateManyUsuarioInputEnvelope
     connect?: CategoriaWhereUniqueInput | CategoriaWhereUniqueInput[]
+  }
+
+  export type SubTareaUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput> | SubTareaCreateWithoutUsuarioInput[] | SubTareaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: SubTareaCreateOrConnectWithoutUsuarioInput | SubTareaCreateOrConnectWithoutUsuarioInput[]
+    createMany?: SubTareaCreateManyUsuarioInputEnvelope
+    connect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7011,6 +7108,20 @@ export namespace Prisma {
     deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
   }
 
+  export type SubTareaUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput> | SubTareaCreateWithoutUsuarioInput[] | SubTareaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: SubTareaCreateOrConnectWithoutUsuarioInput | SubTareaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: SubTareaUpsertWithWhereUniqueWithoutUsuarioInput | SubTareaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: SubTareaCreateManyUsuarioInputEnvelope
+    set?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    disconnect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    delete?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    connect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    update?: SubTareaUpdateWithWhereUniqueWithoutUsuarioInput | SubTareaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: SubTareaUpdateManyWithWhereWithoutUsuarioInput | SubTareaUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
+  }
+
   export type TareaUncheckedUpdateManyWithoutUsuarioNestedInput = {
     create?: XOR<TareaCreateWithoutUsuarioInput, TareaUncheckedCreateWithoutUsuarioInput> | TareaCreateWithoutUsuarioInput[] | TareaUncheckedCreateWithoutUsuarioInput[]
     connectOrCreate?: TareaCreateOrConnectWithoutUsuarioInput | TareaCreateOrConnectWithoutUsuarioInput[]
@@ -7037,6 +7148,20 @@ export namespace Prisma {
     update?: CategoriaUpdateWithWhereUniqueWithoutUsuarioInput | CategoriaUpdateWithWhereUniqueWithoutUsuarioInput[]
     updateMany?: CategoriaUpdateManyWithWhereWithoutUsuarioInput | CategoriaUpdateManyWithWhereWithoutUsuarioInput[]
     deleteMany?: CategoriaScalarWhereInput | CategoriaScalarWhereInput[]
+  }
+
+  export type SubTareaUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput> | SubTareaCreateWithoutUsuarioInput[] | SubTareaUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: SubTareaCreateOrConnectWithoutUsuarioInput | SubTareaCreateOrConnectWithoutUsuarioInput[]
+    upsert?: SubTareaUpsertWithWhereUniqueWithoutUsuarioInput | SubTareaUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: SubTareaCreateManyUsuarioInputEnvelope
+    set?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    disconnect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    delete?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    connect?: SubTareaWhereUniqueInput | SubTareaWhereUniqueInput[]
+    update?: SubTareaUpdateWithWhereUniqueWithoutUsuarioInput | SubTareaUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: SubTareaUpdateManyWithWhereWithoutUsuarioInput | SubTareaUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
   }
 
   export type UsuarioCreateNestedOneWithoutCategoriasInput = {
@@ -7181,10 +7306,24 @@ export namespace Prisma {
     deleteMany?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
   }
 
+  export type UsuarioCreateNestedOneWithoutSubtareasInput = {
+    create?: XOR<UsuarioCreateWithoutSubtareasInput, UsuarioUncheckedCreateWithoutSubtareasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSubtareasInput
+    connect?: UsuarioWhereUniqueInput
+  }
+
   export type TareaCreateNestedOneWithoutSubtareasInput = {
     create?: XOR<TareaCreateWithoutSubtareasInput, TareaUncheckedCreateWithoutSubtareasInput>
     connectOrCreate?: TareaCreateOrConnectWithoutSubtareasInput
     connect?: TareaWhereUniqueInput
+  }
+
+  export type UsuarioUpdateOneRequiredWithoutSubtareasNestedInput = {
+    create?: XOR<UsuarioCreateWithoutSubtareasInput, UsuarioUncheckedCreateWithoutSubtareasInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutSubtareasInput
+    upsert?: UsuarioUpsertWithoutSubtareasInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutSubtareasInput, UsuarioUpdateWithoutSubtareasInput>, UsuarioUncheckedUpdateWithoutSubtareasInput>
   }
 
   export type TareaUpdateOneRequiredWithoutSubtareasNestedInput = {
@@ -7448,6 +7587,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SubTareaCreateWithoutUsuarioInput = {
+    id: string
+    title: string
+    description?: string | null
+    active?: boolean
+    status?: $Enums.Status
+    createdAt?: Date | string
+    lastStatusChanged: Date | string
+    tarea: TareaCreateNestedOneWithoutSubtareasInput
+  }
+
+  export type SubTareaUncheckedCreateWithoutUsuarioInput = {
+    id: string
+    title: string
+    description?: string | null
+    active?: boolean
+    status?: $Enums.Status
+    createdAt?: Date | string
+    lastStatusChanged: Date | string
+    tareaId: string
+  }
+
+  export type SubTareaCreateOrConnectWithoutUsuarioInput = {
+    where: SubTareaWhereUniqueInput
+    create: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type SubTareaCreateManyUsuarioInputEnvelope = {
+    data: SubTareaCreateManyUsuarioInput | SubTareaCreateManyUsuarioInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TareaUpsertWithWhereUniqueWithoutUsuarioInput = {
     where: TareaWhereUniqueInput
     update: XOR<TareaUpdateWithoutUsuarioInput, TareaUncheckedUpdateWithoutUsuarioInput>
@@ -7506,6 +7677,37 @@ export namespace Prisma {
     active?: BoolFilter<"Categoria"> | boolean
   }
 
+  export type SubTareaUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: SubTareaWhereUniqueInput
+    update: XOR<SubTareaUpdateWithoutUsuarioInput, SubTareaUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<SubTareaCreateWithoutUsuarioInput, SubTareaUncheckedCreateWithoutUsuarioInput>
+  }
+
+  export type SubTareaUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: SubTareaWhereUniqueInput
+    data: XOR<SubTareaUpdateWithoutUsuarioInput, SubTareaUncheckedUpdateWithoutUsuarioInput>
+  }
+
+  export type SubTareaUpdateManyWithWhereWithoutUsuarioInput = {
+    where: SubTareaScalarWhereInput
+    data: XOR<SubTareaUpdateManyMutationInput, SubTareaUncheckedUpdateManyWithoutUsuarioInput>
+  }
+
+  export type SubTareaScalarWhereInput = {
+    AND?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
+    OR?: SubTareaScalarWhereInput[]
+    NOT?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
+    id?: StringFilter<"SubTarea"> | string
+    title?: StringFilter<"SubTarea"> | string
+    description?: StringNullableFilter<"SubTarea"> | string | null
+    active?: BoolFilter<"SubTarea"> | boolean
+    status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
+    createdAt?: DateTimeFilter<"SubTarea"> | Date | string
+    lastStatusChanged?: DateTimeFilter<"SubTarea"> | Date | string
+    usuarioId?: StringFilter<"SubTarea"> | string
+    tareaId?: StringFilter<"SubTarea"> | string
+  }
+
   export type UsuarioCreateWithoutCategoriasInput = {
     id: string
     username: string
@@ -7516,6 +7718,7 @@ export namespace Prisma {
     timeBeforeNotification?: number | null
     emailValidated?: boolean
     tareas?: TareaCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutCategoriasInput = {
@@ -7528,6 +7731,7 @@ export namespace Prisma {
     timeBeforeNotification?: number | null
     emailValidated?: boolean
     tareas?: TareaUncheckedCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutCategoriasInput = {
@@ -7592,6 +7796,7 @@ export namespace Prisma {
     timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     tareas?: TareaUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutCategoriasInput = {
@@ -7604,6 +7809,7 @@ export namespace Prisma {
     timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     tareas?: TareaUncheckedUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type TareaUpsertWithWhereUniqueWithoutCategoriaInput = {
@@ -7630,6 +7836,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuario: UsuarioCreateNestedOneWithoutSubtareasInput
   }
 
   export type SubTareaUncheckedCreateWithoutTareaInput = {
@@ -7640,6 +7847,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuarioId: string
   }
 
   export type SubTareaCreateOrConnectWithoutTareaInput = {
@@ -7662,6 +7870,7 @@ export namespace Prisma {
     timeBeforeNotification?: number | null
     emailValidated?: boolean
     categorias?: CategoriaCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutTareasInput = {
@@ -7674,6 +7883,7 @@ export namespace Prisma {
     timeBeforeNotification?: number | null
     emailValidated?: boolean
     categorias?: CategoriaUncheckedCreateNestedManyWithoutUsuarioInput
+    subtareas?: SubTareaUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutTareasInput = {
@@ -7716,20 +7926,6 @@ export namespace Prisma {
     data: XOR<SubTareaUpdateManyMutationInput, SubTareaUncheckedUpdateManyWithoutTareaInput>
   }
 
-  export type SubTareaScalarWhereInput = {
-    AND?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
-    OR?: SubTareaScalarWhereInput[]
-    NOT?: SubTareaScalarWhereInput | SubTareaScalarWhereInput[]
-    id?: StringFilter<"SubTarea"> | string
-    title?: StringFilter<"SubTarea"> | string
-    description?: StringNullableFilter<"SubTarea"> | string | null
-    active?: BoolFilter<"SubTarea"> | boolean
-    status?: EnumStatusFilter<"SubTarea"> | $Enums.Status
-    createdAt?: DateTimeFilter<"SubTarea"> | Date | string
-    lastStatusChanged?: DateTimeFilter<"SubTarea"> | Date | string
-    tareaId?: StringFilter<"SubTarea"> | string
-  }
-
   export type UsuarioUpsertWithoutTareasInput = {
     update: XOR<UsuarioUpdateWithoutTareasInput, UsuarioUncheckedUpdateWithoutTareasInput>
     create: XOR<UsuarioCreateWithoutTareasInput, UsuarioUncheckedCreateWithoutTareasInput>
@@ -7751,6 +7947,7 @@ export namespace Prisma {
     timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     categorias?: CategoriaUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutTareasInput = {
@@ -7763,6 +7960,7 @@ export namespace Prisma {
     timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
     emailValidated?: BoolFieldUpdateOperationsInput | boolean
     categorias?: CategoriaUncheckedUpdateManyWithoutUsuarioNestedInput
+    subtareas?: SubTareaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type CategoriaUpsertWithoutTareasInput = {
@@ -7788,6 +7986,37 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     usuarioId?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type UsuarioCreateWithoutSubtareasInput = {
+    id: string
+    username: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    sendNotifications?: boolean
+    timeBeforeNotification?: number | null
+    emailValidated?: boolean
+    tareas?: TareaCreateNestedManyWithoutUsuarioInput
+    categorias?: CategoriaCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutSubtareasInput = {
+    id: string
+    username: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    sendNotifications?: boolean
+    timeBeforeNotification?: number | null
+    emailValidated?: boolean
+    tareas?: TareaUncheckedCreateNestedManyWithoutUsuarioInput
+    categorias?: CategoriaUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutSubtareasInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutSubtareasInput, UsuarioUncheckedCreateWithoutSubtareasInput>
   }
 
   export type TareaCreateWithoutSubtareasInput = {
@@ -7819,6 +8048,43 @@ export namespace Prisma {
   export type TareaCreateOrConnectWithoutSubtareasInput = {
     where: TareaWhereUniqueInput
     create: XOR<TareaCreateWithoutSubtareasInput, TareaUncheckedCreateWithoutSubtareasInput>
+  }
+
+  export type UsuarioUpsertWithoutSubtareasInput = {
+    update: XOR<UsuarioUpdateWithoutSubtareasInput, UsuarioUncheckedUpdateWithoutSubtareasInput>
+    create: XOR<UsuarioCreateWithoutSubtareasInput, UsuarioUncheckedCreateWithoutSubtareasInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutSubtareasInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutSubtareasInput, UsuarioUncheckedUpdateWithoutSubtareasInput>
+  }
+
+  export type UsuarioUpdateWithoutSubtareasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sendNotifications?: BoolFieldUpdateOperationsInput | boolean
+    timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
+    emailValidated?: BoolFieldUpdateOperationsInput | boolean
+    tareas?: TareaUpdateManyWithoutUsuarioNestedInput
+    categorias?: CategoriaUpdateManyWithoutUsuarioNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutSubtareasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sendNotifications?: BoolFieldUpdateOperationsInput | boolean
+    timeBeforeNotification?: NullableIntFieldUpdateOperationsInput | number | null
+    emailValidated?: BoolFieldUpdateOperationsInput | boolean
+    tareas?: TareaUncheckedUpdateManyWithoutUsuarioNestedInput
+    categorias?: CategoriaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type TareaUpsertWithoutSubtareasInput = {
@@ -7874,6 +8140,17 @@ export namespace Prisma {
     id: string
     name: string
     active?: boolean
+  }
+
+  export type SubTareaCreateManyUsuarioInput = {
+    id: string
+    title: string
+    description?: string | null
+    active?: boolean
+    status?: $Enums.Status
+    createdAt?: Date | string
+    lastStatusChanged: Date | string
+    tareaId: string
   }
 
   export type TareaUpdateWithoutUsuarioInput = {
@@ -7934,6 +8211,39 @@ export namespace Prisma {
     active?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type SubTareaUpdateWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    tarea?: TareaUpdateOneRequiredWithoutSubtareasNestedInput
+  }
+
+  export type SubTareaUncheckedUpdateWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    tareaId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SubTareaUncheckedUpdateManyWithoutUsuarioInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    tareaId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type TareaCreateManyCategoriaInput = {
     id: string
     title: string
@@ -7992,6 +8302,7 @@ export namespace Prisma {
     status?: $Enums.Status
     createdAt?: Date | string
     lastStatusChanged: Date | string
+    usuarioId: string
   }
 
   export type SubTareaUpdateWithoutTareaInput = {
@@ -8002,6 +8313,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuario?: UsuarioUpdateOneRequiredWithoutSubtareasNestedInput
   }
 
   export type SubTareaUncheckedUpdateWithoutTareaInput = {
@@ -8012,6 +8324,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
   export type SubTareaUncheckedUpdateManyWithoutTareaInput = {
@@ -8022,6 +8335,7 @@ export namespace Prisma {
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lastStatusChanged?: DateTimeFieldUpdateOperationsInput | Date | string
+    usuarioId?: StringFieldUpdateOperationsInput | string
   }
 
 

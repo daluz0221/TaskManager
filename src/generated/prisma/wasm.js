@@ -159,6 +159,7 @@ exports.Prisma.SubTareaScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   lastStatusChanged: 'lastStatusChanged',
+  usuarioId: 'usuarioId',
   tareaId: 'tareaId'
 };
 

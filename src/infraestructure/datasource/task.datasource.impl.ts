@@ -57,6 +57,13 @@ export class TaskDatasourceImpl implements TaskDatasource {
                 where: {
                     usuarioId: userId,
                     active: true
+                },
+                include: {
+                    subtareas: {
+                        where: {
+                            active: true
+                        }
+                    }
                 }
             });
             
@@ -78,7 +85,8 @@ export class TaskDatasourceImpl implements TaskDatasource {
         const existsTask = await prisma.tarea.findFirst({
             where: {
                 title: objTask.title,
-                usuarioId: objTask.usuarioId
+                usuarioId: objTask.usuarioId,
+                active: true
             }
         });
 

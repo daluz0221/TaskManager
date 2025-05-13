@@ -1,5 +1,8 @@
 import { Router } from "express";
 import { SubTaskController } from "./controller";
+import { AuthMiddleware } from "../middlewares";
+import { SubTaskRepositoryImpl } from "../../infraestructure/repositories/subtask.repository.impl";
+import { SubTaskDatasourceImpl } from "../../infraestructure/datasource/subtask.datasource.impl";
 
 
 
@@ -14,11 +17,17 @@ export class SubTaskRoutes {
         const router = Router();
 
 
-        const subTaskController = new SubTaskController()
+        const datasource = new SubTaskDatasourceImpl();
+        const subTaskRepository = new SubTaskRepositoryImpl( datasource );
+        const subTaskController = new SubTaskController( subTaskRepository );
+
+
+        router.use( AuthMiddleware.validateJWT )
 
         //Definir las rutas
-        router.get('/', subTaskController.getAllSubTasks);
-        router.post('/', subTaskController.createSubTask);
+        router.post('/', subTaskController.getAllSubTasks);
+        router.post('/subtask/:id', subTaskController.getSubTaskById);
+        router.post('/create', subTaskController.createSubTask);
         router.put('/update/:id', subTaskController.updateSubTask);
         router.put('/delete/:id', subTaskController.deleteSubTask);
 
